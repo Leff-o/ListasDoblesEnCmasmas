@@ -3,6 +3,10 @@
 //
 
 #include "LinkedDouble.h"
+
+template<class T>
+T *getObject(int index);
+
 template<class T>
 LinkedDouble<T>::LinkedDouble() {
     head = NULL;
@@ -179,4 +183,21 @@ T LinkedDouble<T>::deleteNode(Node<T> *node) {
     }
     delete (node);
     return info;
+}
+
+template<class T>
+T * LinkedDouble <T>::getObject( int index) {
+
+    Node<T> *aux = head;
+    int i = 0;
+    while (aux != NULL) {
+        if (i == index) {
+            return &aux->info;
+
+        }
+        aux = aux->next;
+        i++;
+    }
+
+    return NULL;
 }

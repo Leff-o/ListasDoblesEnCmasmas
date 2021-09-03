@@ -31,6 +31,8 @@ public:
 
     Node<T>* findNode(std::string);
 
+    T *getObject(int index);
+
     T* findInfo(std::string);
 
     std::vector<T> getList(bool);
@@ -40,7 +42,6 @@ public:
 private:
     Node<T>* head;
     Node<T>* last;
-
 };
 
 

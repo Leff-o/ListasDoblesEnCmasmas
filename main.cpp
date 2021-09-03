@@ -1,10 +1,9 @@
 #include <iostream>
 
-#include <iostream>
 #include "Book.h"
 #include "LinkedDouble.cpp"
     using namespace std;
-
+    bool seguir = true;
     int main() {
         int opcion;
         LinkedDouble <Book> *linked = new LinkedDouble<Book>();
@@ -13,17 +12,16 @@
         linked->addNodeLast(Book("123", "ajsfisaosnf", "ianfjanfoiaf", 12, 10));
         linked->addNodeLast(Book("000", "ajsfisaosnf", "ianfjanfoiaf", 12, 10));
 
-        Node <Book> *findNode = linked->findNode("123");
-        linked->deleteNode(findNode);
+       // cout<<(*linked->getObject(1));
 
-        for (Book book : linked->getList(true)) {
-            cout << book << endl;
-        }
 
-        cout << "\n|-------------------|";
+
+      do{ cout << "\n|-------------------|";
         cout << "\n| 1. Crear Libro    | ";
         cout << "\n| 2. Buscar Libro   | ";
         cout << "\n| 3. Eliminar Libro | ";
+        cout << "\n| 4. Mostrar Libros | ";
+        cout << "\n| 5. Salir           | ";
         cout << "\n|-------------------|";
         cout << "\n\n Escoja una Opcion: \n";
         cin >> opcion;
@@ -51,7 +49,7 @@
                 Book *book = new Book(ISBN, titulo, autor, paginas, year);
                 //linked->addNodeFirst(*book);
                 int optInt;
-                cout << "Ingrese el número para agregar el Libro en la posición deseada";
+                cout << "Ingrese el número para agregar el Libro en la posición deseada\n";
                 cout << "1. Al principio\n2. Al final\n3.Antes de\n4.Después de\n";
                 cin >> optInt;
                 switch (optInt) {
@@ -67,7 +65,7 @@
                         cout << "Ingrese el ISBN del libro referencia\n";
                         cin >> information;
 
-                        Node <Book> *findBook = linked->findNode(information);
+                        Node<Book> *findBook = linked->findNode(information);
                         linked->addNodeBeforeTo(findBook, *book);
                     }
                         break;
@@ -77,17 +75,15 @@
                         cout << "Ingrese el ISBN del libro referencia\n";
                         cin >> information;
 
-                        Node <Book> *findBook = linked->findNode(information);
+                        Node<Book> *findBook = linked->findNode(information);
                         linked->addNodeAfterTo(findBook, *book);
 
                         break;
                 }
-                // for (Book book : linked->getList( true ) ){
-                //    cout<<book<<endl;
-                //}
+
             }
                 break;
-            case 2:
+            case 2: {
                 string ISBN;
                 cout << "Ingrese el ISBN del libro\n";
                 cin >> ISBN;
@@ -99,8 +95,34 @@
                 } else {
                     cout << "Nel" << endl;
                 }
+            }
                 break;
+
+            case 3:{
+                string ISBN;
+                cout << "Ingrese el ISBN del libro\n";
+                cin >> ISBN;
+                Node <Book> *findNode = linked->findNode(ISBN);
+                linked->deleteNode(findNode);
+
+            }
+                break;
+
+            case 4:
+
+                for (Book book : linked->getList( true ) ){
+                   cout<<book<<endl;
+                }
+                break;
+
+            case 5: {
+                cout<<"BYE BYE"<<endl;
+               seguir = false;
+            }
+                break;
+
         }
+          }while(seguir);
         return 0;
 
     }
