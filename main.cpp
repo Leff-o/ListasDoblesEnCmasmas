@@ -16,13 +16,14 @@
 
 
 
-      do{ cout<<"\n|-------------------|";
-        cout << "\n| 1. Crear Libro    | ";
-        cout << "\n| 2. Buscar Libro   | ";
-        cout << "\n| 3. Eliminar Libro | ";
-        cout << "\n| 4. Mostrar Libros | ";
-        cout << "\n| 5. Salir          | ";
-        cout << "\n|-------------------|";
+      do{ cout<<"\n|------------------------------|";
+        cout << "\n| 1. Crear Libro               | ";
+        cout << "\n| 2. Buscar Libro              | ";
+        cout << "\n| 3. Eliminar Libro            | ";
+        cout << "\n| 4. Mostrar Libros            | ";
+        cout<<  "\n| 5. Mostrar Libros get object | ";
+        cout << "\n| 6. Salir                     | ";
+        cout << "\n|------------------------------| ";
         cout << "\n\n Escoja una Opcion: \n";
         cin >> opcion;
         switch (opcion) {
@@ -121,11 +122,16 @@
                 break;
 
             case 5: {
-                cout<<"BYE BYE"<<endl;
-               seguir = false;
+               int index;
+               cout<<"Ingresa la posición del libro\n";
+               cin>> index;
+               cout<<*linked->getObject(index);
             }
                 break;
-
+            case 6:
+                cout<<"BYE BYE"<<endl;
+                seguir = false;
+                break;
         }
           }while(seguir);
         return 0;
