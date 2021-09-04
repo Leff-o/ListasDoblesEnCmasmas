@@ -143,11 +143,6 @@ T *LinkedDouble<T>::findInfo(std::string ISBN) {
 }
 
 template<class T>
-void LinkedDouble<T>::addNodeSorted(T) {
-
-}
-
-template<class T>
 T LinkedDouble<T>::deleteNode(Node<T> *node) {
     T info = node->info;
     Node<T> *prev = NULL;
@@ -184,7 +179,47 @@ T LinkedDouble<T>::deleteNode(Node<T> *node) {
     delete (node);
     return info;
 }
+template<class T>
+void LinkedDouble<T>::addNodesorted(T info)
+{
+    Node<T>* newNode = new Node<T>(info);
+    if (isEmpty())
+    {
+        head = newNode;
+        last = newNode;
+    }
+    else
+    {
+        Node<T>* act = head;
+        Node<T>* ant = NULL;
+        while (act != NULL && info.getISBN().compare(act->info.getISBN()) > 0)
+        {
+            ant = act;
+            act = act->next;
+        }
 
+        if (ant == NULL)
+        {
+            newNode->next = act;
+            act->previous = newNode;
+            head = newNode;
+        }
+        else if (ant == last)
+        {
+            ant->next = newNode;
+            newNode->previous = ant;
+            last = newNode;
+        }
+        else
+        {
+            newNode->next = act;
+            ant->next = newNode;
+            newNode->previous = ant;
+            act->previous = newNode;
+        }
+
+    }
+}
 template<class T>
 T * LinkedDouble <T>::getObject( int index) {
 

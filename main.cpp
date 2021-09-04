@@ -16,12 +16,12 @@
 
 
 
-      do{ cout << "\n|-------------------|";
+      do{ cout<<"\n|-------------------|";
         cout << "\n| 1. Crear Libro    | ";
         cout << "\n| 2. Buscar Libro   | ";
         cout << "\n| 3. Eliminar Libro | ";
         cout << "\n| 4. Mostrar Libros | ";
-        cout << "\n| 5. Salir           | ";
+        cout << "\n| 5. Salir          | ";
         cout << "\n|-------------------|";
         cout << "\n\n Escoja una Opcion: \n";
         cin >> opcion;
@@ -33,12 +33,11 @@
                 int paginas;
                 int year;
                 cout << "\n\n CREAR UN NUEVO LIBRO \n\n";
-
                 cout << "\n\n INSERTE ISBN\n";
                 cin >> ISBN;
-
                 cout << "\n\n INSERTE TITULO\n";
                 cin >> titulo;
+                fflush(stdin);
                 cout << "\n\n INSERTE AUTOR\n";
                 cin >> autor;
                 cout << "\n\n INSERTE PAGINAS\n";
@@ -50,7 +49,7 @@
                 //linked->addNodeFirst(*book);
                 int optInt;
                 cout << "Ingrese el número para agregar el Libro en la posición deseada\n";
-                cout << "1. Al principio\n2. Al final\n3.Antes de\n4.Después de\n";
+                cout << "1. Al principio\n2. Al final\n3.Antes de\n4.Después de\n5. Ordenado\n";
                 cin >> optInt;
                 switch (optInt) {
                     case 1:
@@ -70,15 +69,21 @@
                     }
                         break;
 
-                    case 4:
+                    case 4: {
                         string information;
                         cout << "Ingrese el ISBN del libro referencia\n";
                         cin >> information;
 
                         Node<Book> *findBook = linked->findNode(information);
                         linked->addNodeAfterTo(findBook, *book);
+                    }
+                        break;
+                    case 5: {
+
+                        linked->addNodesorted(*book);
 
                         break;
+                    }
                 }
 
             }

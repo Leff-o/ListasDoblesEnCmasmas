@@ -25,8 +25,6 @@ public:
 
     void addNodeBeforeTo(Node<T>*, T);
 
-    void addNodeSorted(T);
-
     T deleteNode(Node<T> *node);
 
     Node<T>* findNode(std::string);
@@ -38,10 +36,12 @@ public:
     std::vector<T> getList(bool);
 
     virtual ~LinkedDouble();
-
+    void addNodesorted(T info);
 private:
     Node<T>* head;
     Node<T>* last;
+
+
 };
 
 
